@@ -1,0 +1,809 @@
+ /* ========================================
+    VARIABLES
+======================================== */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #0f172a;
+    --text-color: #334155;
+    --text-light: #64748b;
+    --background-color: #ffffff;
+    --light-background: #f8fafc;
+    --border-color: #e2e8f0;
+    --white: #ffffff;
+
+    --transition: 0.3s ease;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --shadow-hover: 0 20px 40px rgba(15, 23, 42, 0.15);
+}
+
+
+/* ========================================
+   GENERAL
+======================================== */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 75px;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+section {
+    position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--secondary-color);
+    line-height: 1.3;
+}
+
+p {
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+
+/* ========================================
+   NAVBAR
+======================================== */
+
+.navbar {
+    min-height: 70px;
+    background: rgba(15, 23, 42, 0.96) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+}
+
+.navbar-brand .text-primary {
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    padding: 0.7rem 0.9rem !important;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--white) !important;
+}
+
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    left: 50%;
+    bottom: 3px;
+    transform: translateX(-50%);
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 60%;
+}
+
+.navbar .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.navbar .btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.navbar-toggler {
+    border: none;
+    box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+
+/* ========================================
+   BOUTONS
+======================================== */
+
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.btn-outline-dark {
+    border-width: 2px;
+}
+
+.btn-outline-dark:hover {
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+   HERO / ACCUEIL
+======================================== */
+
+#accueil {
+    min-height: 100vh;
+    padding-top: 100px;
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(37, 99, 235, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fafc 100%
+        );
+    overflow: hidden;
+}
+
+#accueil::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.06);
+    top: 15%;
+    right: -120px;
+    animation: floating 6s ease-in-out infinite;
+}
+
+#accueil::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 30px solid rgba(37, 99, 235, 0.04);
+    bottom: 10%;
+    left: -80px;
+}
+
+#accueil .container {
+    position: relative;
+    z-index: 2;
+}
+
+#accueil .text-primary {
+    color: var(--primary-color) !important;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+#accueil h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 0;
+}
+
+#accueil h1 .text-primary {
+    color: var(--primary-color) !important;
+}
+
+#accueil h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--text-light) !important;
+}
+
+#accueil .lead {
+    max-width: 650px;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+
+/* ========================================
+   PHOTO PROFIL
+======================================== */
+
+#accueil img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border: 8px solid var(--white);
+    box-shadow:
+        0 0 0 10px rgba(37, 99, 235, 0.08),
+        0 25px 50px rgba(15, 23, 42, 0.15) !important;
+
+    animation: profileFloat 5s ease-in-out infinite;
+    transition: var(--transition);
+}
+
+#accueil img:hover {
+    transform: scale(1.03);
+}
+
+
+/* ========================================
+   TITRES DES SECTIONS
+======================================== */
+
+section:not(#accueil) {
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+}
+
+section > .container > .text-center p:first-child {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--primary-color) !important;
+    margin-bottom: 8px;
+}
+
+section > .container > .text-center h2 {
+    font-size: 2.5rem;
+    font-weight: 750;
+    margin-bottom: 15px;
+}
+
+section > .container > .text-center h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    margin: 15px auto 0;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+
+/* ========================================
+   À PROPOS
+======================================== */
+
+#apropos {
+    background-color: var(--light-background) !important;
+}
+
+#apropos h3 {
+    font-size: 2rem;
+}
+
+#apropos p {
+    color: var(--text-light);
+}
+
+#apropos .row.text-center > div {
+    padding: 20px;
+    transition: var(--transition);
+}
+
+#apropos .row.text-center > div:hover {
+    transform: translateY(-5px);
+}
+
+#apropos h3.text-primary {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+}
+
+#apropos .row.text-center p {
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   COMPÉTENCES
+======================================== */
+
+#competences {
+    background-color: var(--white);
+}
+
+#competences .card {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 14px;
+    padding: 10px;
+    transition: all 0.35s ease;
+    background-color: var(--white);
+}
+
+#competences .card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(37, 99, 235, 0.3) !important;
+    box-shadow: var(--shadow-hover) !important;
+}
+
+#competences .card-body {
+    padding: 30px 20px;
+}
+
+#competences h4 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+#competences h4::before {
+    content: "</>";
+    display: block;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+#competences p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   PROJETS
+======================================== */
+
+#projets {
+    background-color: var(--light-background) !important;
+}
+
+#projets .card {
+    border: none !important;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--white);
+    transition: all 0.4s ease;
+}
+
+#projets .card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover) !important;
+}
+
+#projets .card-img-top {
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+#projets .card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+#projets .card-body {
+    padding: 25px;
+}
+
+#projets .card-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+#projets .card-text {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+#projets .badge {
+    font-weight: 500;
+    padding: 7px 10px;
+    margin-right: 4px;
+    border-radius: 5px;
+}
+
+
+/* ========================================
+   PARCOURS
+======================================== */
+
+#parcours {
+    background-color: var(--white);
+}
+
+#parcours .border-start {
+    border-color: var(--primary-color) !important;
+    position: relative;
+    padding: 30px;
+    background-color: var(--light-background);
+    border-radius: 0 12px 12px 0;
+    box-shadow: var(--shadow);
+}
+
+#parcours .border-start::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    left: -9px;
+    top: 30px;
+    border: 3px solid var(--white);
+}
+
+#parcours h4 {
+    font-weight: 700;
+}
+
+#parcours .text-primary {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+}
+
+
+/* ========================================
+   SERVICES
+======================================== */
+
+#services {
+    background-color: var(--light-background) !important;
+}
+
+#services .card {
+    border-radius: 15px;
+    transition: all 0.35s ease;
+}
+
+#services .card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover) !important;
+}
+
+#services .card-body {
+    padding: 40px 25px !important;
+}
+
+#services h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+#services h4::before {
+    content: "✦";
+    display: block;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+#services p {
+    color: var(--text-light);
+}
+
+
+/* ========================================
+   CONTACT
+======================================== */
+
+#contact {
+    background-color: var(--white);
+}
+
+#contact .text-muted {
+    color: var(--text-light) !important;
+}
+
+#contact form {
+    padding: 35px;
+    border-radius: 15px;
+    background-color: var(--light-background);
+    box-shadow: var(--shadow);
+}
+
+#contact .form-label {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+#contact .form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: var(--transition);
+}
+
+#contact .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+#contact textarea {
+    resize: vertical;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    background-color: var(--secondary-color) !important;
+}
+
+footer h5 {
+    color: var(--white);
+    font-size: 1.4rem;
+}
+
+footer .text-primary {
+    color: var(--primary-color) !important;
+}
+
+footer .text-secondary {
+    color: #94a3b8 !important;
+}
+
+footer p {
+    color: #94a3b8;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes floating {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes profileFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#accueil h1,
+#accueil h2,
+#accueil p,
+#accueil .btn {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+#accueil h2 {
+    animation-delay: 0.15s;
+}
+
+#accueil .lead {
+    animation-delay: 0.25s;
+}
+
+#accueil .btn {
+    animation-delay: 0.4s;
+}
+
+
+/* ========================================
+   RESPONSIVE TABLETTE
+======================================== */
+
+@media (max-width: 991.98px) {
+
+    .navbar-nav {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 0 !important;
+    }
+
+    .navbar-nav .nav-link::after {
+        display: none;
+    }
+
+    .navbar-nav .btn {
+        margin-top: 10px;
+    }
+
+    #accueil {
+        text-align: center;
+        padding-top: 130px;
+        padding-bottom: 80px;
+    }
+
+    #accueil .lead {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #accueil img {
+        width: 280px;
+        height: 280px;
+    }
+
+    section > .container > .text-center h2 {
+        font-size: 2.2rem;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE MOBILE
+======================================== */
+
+@media (max-width: 767.98px) {
+
+    body {
+        font-size: 0.95rem;
+    }
+
+    section:not(#accueil) {
+        padding-top: 65px !important;
+        padding-bottom: 65px !important;
+    }
+
+    #accueil {
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: 70px;
+    }
+
+    #accueil h1 {
+        font-size: 2.7rem;
+        letter-spacing: -1px;
+    }
+
+    #accueil h2 {
+        font-size: 1.4rem;
+    }
+
+    #accueil .lead {
+        font-size: 1rem;
+    }
+
+    #accueil img {
+        width: 230px;
+        height: 230px;
+        margin-top: 20px;
+    }
+
+    #accueil .btn {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0 !important;
+    }
+
+    section > .container > .text-center h2 {
+        font-size: 1.9rem;
+    }
+
+    #apropos h3 {
+        font-size: 1.6rem;
+    }
+
+    #apropos .row.text-center {
+        margin-top: 30px;
+    }
+
+    #apropos h3.text-primary {
+        font-size: 2rem;
+    }
+
+    #competences .card-body {
+        padding: 25px 15px;
+    }
+
+    #projets .card-img-top {
+        height: 200px;
+    }
+
+    #parcours .border-start {
+        padding: 25px 20px;
+    }
+
+    #services .card-body {
+        padding: 30px 20px !important;
+    }
+
+    #contact form {
+        padding: 20px;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+}
+
+
+/* ========================================
+   PETITS TÉLÉPHONES
+======================================== */
+
+@media (max-width: 400px) {
+
+    #accueil h1 {
+        font-size: 2.3rem;
+    }
+
+    #accueil img {
+        width: 200px;
+        height: 200px;
+    }
+
+    section > .container > .text-center h2 {
+        font-size: 1.7rem;
+    }
+
+}
